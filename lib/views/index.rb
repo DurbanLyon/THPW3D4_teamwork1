@@ -3,7 +3,7 @@ require 'townhalls_mailer'
 #require 'townhalls_follower'
 require 'townhalls_scrapper'
 
-$db_json = "./../../db/emails.JSON" # Emplacement du fichier Json en db
+$db_json = "./db/emails.JSON" # Emplacement du fichier Json en db
 
 
 class Index
@@ -37,7 +37,7 @@ class Index
       Scrapp_mairie.new.create
       unless FileTest.exist?($db_json) then puts "Erreur : le fichier n'a pas été créé en database" end # Verif si le fichier JSON a bien été créé en db
       puts "Données récupérées, voulez-vous les afficher ? y/n"
-      if gets.chomp = "y" then puts File.open($db_json) end
+      if gets.chomp == "y" then puts File.open($db_json) end
 
     elsif choice == "2" # Envoi un mail à une adresse rentrée par l'utilisateur
 
@@ -57,7 +57,7 @@ class Index
     elsif choice == "5" # Efface le fichier JSON
       File.delete($db_json)
       if FileTest.exist?($db_json) then puts "Je n'ai pas réussi à effacer les données..."
-      else puts "Données effacées !"
+      else puts "Données effacées !" end
 
     elsif choice == "6" # Quitte l'appli
       return puts "A bientôt !"
