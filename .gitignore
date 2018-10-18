@@ -1,3 +1,7 @@
 .env
 Gemfile.lock
 .config.json
+<<<<<<< HEAD
+=======
+lib/app/mailer.env
+>>>>>>> e1fd22bbfd47e04948cd99fba9fe378b73f28a83
