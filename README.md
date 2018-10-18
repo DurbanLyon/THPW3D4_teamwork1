@@ -6,15 +6,15 @@
 # Awesome README
 
 # Présentation
-nom            | Pseudo Slack
- ------------  | -------------
-Saghour khalil | @saghour khalil
-Boumedine Salim| @SaSSou
-Palma Andréa   | @plm
-Jolan Lacroix  | @JOLLACRO
-Potie Quentin  | @TinQk
-Jiffard Joslin | @Redcozmo
-Durban kenadi  | @Kenadi.S
+nom             | Pseudo Slack
+ ------------   | -------------
+Saghour khalil  | @saghour khalil
+Boumedine Salim | @SaSSou
+Palma Andréa    | @plm
+Jolan Lacroix   | @JOLLACRO
+Potie Quentin   | @TinQk
+Giffard Josselin| @Redcozmo
+Durban kenadi   | @Kenadi.S
 
 
 # Comment fonction le programme ?
