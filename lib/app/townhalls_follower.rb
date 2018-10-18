@@ -30,26 +30,34 @@ class TownHallsFollower
 
   # methode cherchant avec l'API twitter les handles de mairies
   def get_handle()
-      # parse du fichier JSON
+    # parse du fichier JSON
+    puts 'Lecture du fichier .json...'
+    json = File.read('db/emails.json') # adresse du fichier
+    @jsonparsed = JSON.parse(json)
 
-      json = File.read('db/emails.json') # adresse du fichier
-      @jsonparsed = JSON.parse(json)
-
-      client = Twitter::REST::Client.new do |config|
+    client = Twitter::REST::Client.new do |config|
       config.consumer_key         = ENV['TWITTER_API_KEY']
       config.consumer_secret      = ENV['TWITTER_API_SECRET']
       config.access_token         = ENV['TWITTER_ACCESS_TOKEN']
       config.access_token_secret  = ENV['TWITTER_ACCESS_TOKEN_SECRET']
-      end
+    end
 
+    puts 'Recherche des handle twitter sous la forme < mairie de nom_ville >...'
+    puts ''
     user_list = []
     @jsonparsed.each do |k, _v|
-      unless client.user_search("ville de #{k}").take(1) == nil?
-        user_list << client.user_search("ville de #{k}").take(1)
+      handle = client.user_search("ville de #{k}").take(1)
+      if handle == nil?
+        print "ville de #{k} : handle => "
+        puts "aucun handle"
       end
-      puts user_list
-      return user_list
+      unless handle == nil?
+        print "ville de #{k} : handle => "
+        puts "#{handle}"
+        user_list << handle
+      end
     end
+    return user_list
   end
 
   # methode qui follow les mairies sur twitter
