@@ -1,6 +1,5 @@
 $:.unshift File.expand_path("./../../app", __FILE__)
-$:.unshift File.expand_path("./../../app/mailer", __FILE__)
-#require 'townhalls_mailer'
+require 'townhalls_mailer'
 #require 'townhalls_follower'
 #require 'townhalls_scrapper'
 
@@ -40,7 +39,8 @@ class Index
 
 
     elsif choice == "2"
-      unless FileTest.exist?($db_json) then puts "Veuillez récupérer les emails des mairies d'abord" end# Verif si le fichier JSON a bien été créé en db
+      unless FileTest.exist?($db_json) then puts "Veuillez récupérer les emails des mairies d'abord" end # Verif si le fichier JSON a bien été créé en db
+      Mailer.new
 
     elsif choice == "3"
       unless FileTest.exist?($db_json) then puts "Veuillez récupérer les emails des mairies d'abord" end# Verif si le fichier JSON a bien été créé en db
@@ -50,6 +50,8 @@ class Index
     elsif choice == "5"
       return puts "A bientôt !"
     end
+
+    main_options
 
   end # main_options
 
