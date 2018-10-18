@@ -37,5 +37,6 @@ class Mailer
                 body "Hello, i'm a test"
             end
         end
+        gmail.logout
     end
 end
