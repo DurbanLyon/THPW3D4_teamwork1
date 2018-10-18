@@ -5,4 +5,4 @@ $:.unshift File.expand_path("./../lib/app", __FILE__)
 require 'townhalls_scrapper'
 require 'google'
 
-Scrapp_mairie.new.contents_to_json
+Scrapp_mairie.new.create
