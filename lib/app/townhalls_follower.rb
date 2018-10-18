@@ -25,38 +25,43 @@ Dotenv.load
 class TownHallsFollower
   # methode initialisation
   def initialize
-    # parse du fichier JSON
-    json = File.read(ENV['JSON']) # adresse du fichier dans .ENV
-    @jsonparsed = JSON.parse(json)
-    perform
+    perform()
   end
 
   # methode cherchant avec l'API twitter les handles de mairies
-  def get_handle
-    client = Twitter::REST::Client.new do |config|
+  def get_handle()
+      # parse du fichier JSON
+      json = File.read(ENV['JSON']) # adresse du fichier dans .ENV
+      @jsonparsed = JSON.parse(json)
+
+      client = Twitter::REST::Client.new do |config|
       config.consumer_key         = ENV['TWITTER_API_KEY']
       config.consumer_secret      = ENV['TWITTER_API_SECRET']
       config.access_token         = ENV['TWITTER_ACCESS_TOKEN']
       config.access_token_secret  = ENV['TWITTER_ACCESS_TOKEN_SECRET']
-    end
+      end
 
-    @user_list = []
+    user_list = []
     @jsonparsed.each do |k, _v|
       unless client.user_search("ville de #{k}").take(1) == nil?
-        @user_list << client.user_search("ville de #{k}").take(1)
+        user_list << client.user_search("ville de #{k}").take(1)
       end
+      return user_list
     end
   end
 
   # methode qui follow les mairies sur twitter
-  def follow_all
+  def follow_all(user_list)
     client = Twitter::REST::Client.new do |config|
       config.consumer_key         = ENV['TWITTER_API_KEY']
       config.consumer_secret      = ENV['TWITTER_API_SECRET']
       config.access_token         = ENV['TWITTER_ACCESS_TOKEN']
       config.access_token_secret  = ENV['TWITTER_ACCESS_TOKEN_SECRET']
     end
-    @user_list.each { |elem| client.follow(elem) }
+    user_list.each do |elem|
+      client.follow(elem)
+      puts "Follow #{elem} done"
+    end
   end
 
   # methode qui enregistre nom|mail|handle dans un CSV
@@ -65,8 +70,8 @@ class TownHallsFollower
 
   # lancement global
   def perform
-    get_handle
-    follow_all
+    user_list = get_handle()
+    follow_all(user_list)
     #create_csv
   end
 end

@@ -8,7 +8,7 @@ class Mailer
     end
 
     def spammer()
-        json = File.read("db/emails.json")
+        json = File.read('db/emails.json')
         hash = JSON.parse(json)
 
         gmail = Gmail.connect(ENV['ID'], ENV['PASS'])
