@@ -1,8 +1,8 @@
 $:.unshift File.expand_path("./../../app", __FILE__)
-require 'townhalls_mailer'
-require 'townhalls_adder_to_db'
-require 'townhalls_follower'
-require 'townhalls_scrapper'
+$:.unshift File.expand_path("./../../app/mailer", __FILE__)
+#require 'townhalls_mailer'
+#require 'townhalls_follower'
+#require 'townhalls_scrapper'
 
 class Index
 
@@ -23,8 +23,8 @@ class Index
     possible_choices = ["1", "2", "3", "4"]
     choice = ""
     until possible_choices.include?(choice)
-      choice = get.chomp.to_s
-      unless possible_choices.include?(choice) then puts "Merci de rentrer une commande valide."
+      choice = gets.chomp.to_s
+      unless possible_choices.include?(choice) then puts "Merci de rentrer une commande valide." end
     end
 
     # Commandes
@@ -37,3 +37,7 @@ class Index
     elsif choice == "4"
       return puts "A bientôt !"
     end
+
+  end # main_options
+
+end # Index
