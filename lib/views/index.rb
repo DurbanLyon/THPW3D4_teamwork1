@@ -4,12 +4,6 @@ require 'townhalls_mailer'
 require 'townhalls_follower'
 require 'townhalls_scrapper'
 
-<<<<<<< HEAD
-=======
-$db_json = "./db/emails.JSON" # Emplacement du fichier Json en db
-
->>>>>>> master
-
 class Index
 
   def initialize
@@ -41,11 +35,7 @@ class Index
       Scrapp_mairie.new.create
       unless FileTest.exist?("db/emails.json") then puts "Erreur : le fichier n'a pas été créé en database" end # Verif si le fichier JSON a bien été créé en db
       puts "Données récupérées, voulez-vous les afficher ? y/n"
-<<<<<<< HEAD
       if gets.chomp == "y" then puts File.open("db/emails.json") end
-=======
-      if gets.chomp == "y" then puts File.open($db_json) end
->>>>>>> master
 
     elsif choice == "2" # Envoi un mail à une adresse rentrée par l'utilisateur
 
@@ -61,20 +51,14 @@ class Index
     elsif choice == "4" # Follow les mairies sur twitter
 
       unless FileTest.exist?("db/emails.json") then puts "Veuillez récupérer les emails des mairies d'abord" end# Verif si le fichier JSON a bien été créé en db
-      TownHallsFollower.follow_all(TownHallsFollower.get_handle)
+      TownHallsFollower.new.perform()
 
 
     elsif choice == "5" # Efface le fichier JSON
-<<<<<<< HEAD
       File.delete("db/emails.json")
       if FileTest.exist?("db/emails.json") then puts "Je n'ai pas réussi à effacer les données..."
       else puts "Données effacées !"
       end
-=======
-      File.delete($db_json)
-      if FileTest.exist?($db_json) then puts "Je n'ai pas réussi à effacer les données..."
-      else puts "Données effacées !" end
->>>>>>> master
 
     elsif choice == "6" # Quitte l'appli
       return puts "A bientôt !"
