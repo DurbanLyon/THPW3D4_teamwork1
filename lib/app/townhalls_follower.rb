@@ -14,7 +14,6 @@ json = File.read(ENV['JSON'])
 content = JSON.parse(json)
 
 
-town_hall_list = ["Lyon3", "Lyon4"]
 
 =end
 
