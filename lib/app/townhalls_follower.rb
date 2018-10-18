@@ -3,6 +3,7 @@ require 'dotenv'
 require 'json'
 Dotenv.load
 
+<<<<<<< HEAD
 
 
 #GET HANDLES
@@ -10,9 +11,19 @@ Dotenv.load
 #ws = session.spreadsheet_by_key("LIEN DU SPREADSHEET").worksheets[0]
 =begin
 json = File.read(ENV['JSON'])
+=======
+@user_list = []
+
+
+# fonction qui va chercher les noms des mairies dans le JSON
+def get_town_name()
+
+end
+>>>>>>> origin
 
 content = JSON.parse(json)
 
+<<<<<<< HEAD
 
 
 =end
@@ -39,6 +50,25 @@ content = JSON.parse(json)
 
 
  def contact(string,array)
+=======
+# fonction qui cherche des handles avec les noms de mairie
+def get_handle(array)
+
+  client = Twitter::REST::Client.new do |config|
+  config.consumer_key        = ENV["TWITTER_API_KEY"]
+  config.consumer_secret     = ENV["TWITTER_API_SECRET"]
+  config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
+  config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
+  end
+
+  @user_list = []
+  @user_list << client.user_search('villeurbanne').take(1)
+  return @user_list
+end
+
+# Fonction qui follow les mairies
+def follow_all(array)
+>>>>>>> origin
    client = Twitter::REST::Client.new do |config|
     config.consumer_key        = ENV["TWITTER_API_KEY"]
     config.consumer_secret     = ENV["TWITTER_API_SECRET"]
@@ -46,6 +76,7 @@ content = JSON.parse(json)
     config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
    end
 
+<<<<<<< HEAD
    array.each{|elem| client.update("@" + elem + " " + string) }
  end
 
@@ -89,3 +120,12 @@ content = JSON.parse(json)
 
 
 research(@town_hall_list)
+=======
+   array.each{|elem| client.follow(elem)}
+end
+
+get_handle(@user_list)
+follow_all(@user_list)
+
+puts @user_list
+>>>>>>> origin
