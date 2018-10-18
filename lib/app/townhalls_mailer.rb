@@ -2,12 +2,14 @@ require 'gmail'
 require 'dotenv/load'
 require 'json'
 
+# encoding: utf-8
+
 class Mailer
     def initialize()
     end
 
     def spammer()
-        json = File.read(ENV['JSON'])
+        json = File.read("db/emails.json")
         hash = JSON.parse(json)
 
         gmail = Gmail.connect(ENV['ID'], ENV['PASS'])
