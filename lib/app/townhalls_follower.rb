@@ -6,12 +6,12 @@ Dotenv.load
 class TownHallsFollower
 
   def initialize()
-# va chercher les noms des mairies dans le JSON
+    # On va chercher les noms des mairies dans le JSON
     json = File.read(ENV['JSON'])
     @jsonparsed = JSON.parse(json)
   end
 
-    # fonction qui cherche des handles avec les noms de mairie
+    # Fonction qui cherche des handles avec les noms de mairie
   def get_handle()
 
     client = Twitter::REST::Client.new do |config|
@@ -42,5 +42,10 @@ class TownHallsFollower
      end
 
      array.each{|elem| client.follow(elem)}
+  end
+
+  # Fonction qui enregistre nom|mail|handle dans un CSV
+  def create_csv()
+
   end
 end
