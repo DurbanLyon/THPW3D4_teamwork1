@@ -1,9 +1,8 @@
-$:.unshift File.expand_path("./../../app", __FILE__)
-require 'townhalls_mailer'
-#require 'townhalls_follower'
-require 'townhalls_scrapper'
+$:.unshift File.expand_path("./../../app", __FILE__) # emplacement des apps à lancer
 
-$db_json = "./../../db/emails.JSON" # Emplacement du fichier Json en db
+require 'townhalls_mailer'
+require 'townhalls_follower'
+require 'townhalls_scrapper'
 
 
 class Index
@@ -35,9 +34,9 @@ class Index
     if choice == "1" # Crée un fichier JSON en db et scrapp les données des mairies
 
       Scrapp_mairie.new.create
-      unless FileTest.exist?($db_json) then puts "Erreur : le fichier n'a pas été créé en database" end # Verif si le fichier JSON a bien été créé en db
+      unless FileTest.exist?("db/emails.json") then puts "Erreur : le fichier n'a pas été créé en database" end # Verif si le fichier JSON a bien été créé en db
       puts "Données récupérées, voulez-vous les afficher ? y/n"
-      if gets.chomp = "y" then puts File.open($db_json) end
+      if gets.chomp == "y" then puts File.open("db/emails.json") end
 
     elsif choice == "2" # Envoi un mail à une adresse rentrée par l'utilisateur
 
@@ -47,20 +46,24 @@ class Index
 
     elsif choice == "3" # Envoi un mail publicitaire à chaque mairie
 
-      unless FileTest.exist?($db_json) then puts "Veuillez récupérer les emails des mairies d'abord" end # Verif si le fichier JSON a bien été créé en db
+      unless FileTest.exist?("db/emails.json") then puts "Veuillez récupérer les emails des mairies d'abord" end # Verif si le fichier JSON a bien été créé en db
       Mailer.new.spammer()
 
     elsif choice == "4" # Follow les mairies sur twitter
 
-      unless FileTest.exist?($db_json) then puts "Veuillez récupérer les emails des mairies d'abord" end# Verif si le fichier JSON a bien été créé en db
+      unless FileTest.exist?("db/emails.json") then puts "Veuillez récupérer les emails des mairies d'abord" end# Verif si le fichier JSON a bien été créé en db
+      TownHallsFollower.follow_all(TownHallsFollower.get_handle)
+
 
     elsif choice == "5" # Efface le fichier JSON
-      File.delete($db_json)
-      if FileTest.exist?($db_json) then puts "Je n'ai pas réussi à effacer les données..."
+      File.delete("db/emails.json")
+      if FileTest.exist?("db/emails.json") then puts "Je n'ai pas réussi à effacer les données..."
       else puts "Données effacées !"
+      end
 
     elsif choice == "6" # Quitte l'appli
       return puts "A bientôt !"
+
     end
 
     # Renvoi au menu
