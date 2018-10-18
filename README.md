@@ -37,3 +37,25 @@ Palma Andréa   | @plm
 
 # Comment fonction le programme ?
 
+Le programme permet de :
+
+* envoyer un mail de pub à une adresse quelconque afin de faire un test
+* envoyer automatiquement des emails publicitaire aux mairies de ces trois départements : cote d'or, Rhone et Bouche du rhone
+* suivre les compte twitter des mairies des départements pré-cités.
+
+Afin de faire fonctionner le programme, il faut au préalable créer un fichier ".env" et renseigner dedans les lignes qui suivent :
+
+* ID=‘your_email’
+* PASS=‘your_gmail_password’
+
+* TWITTER_API_KEY="your_twitter_key"
+* TWITTER_API_SECRET="your_twitter_secret"
+* TWITTER_ACCESS_TOKEN="your_token"
+* TWITTER_ACCESS_TOKEN_SECRET="your_token_secret"
+
+Une fois ce fichier créer, effectuer les deux commandes suivantes :
+
+* bundle install
+* ruby app.rb
+
+Enjoy !
