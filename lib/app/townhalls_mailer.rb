@@ -37,6 +37,9 @@ class Mailer
                 body "Hello, i'm a test"
             end
         end
+        puts "All mail was sent"
+        puts "Gmail will logout"
         gmail.logout
+        puts "Done"
     end
 end
