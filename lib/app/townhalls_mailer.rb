@@ -9,7 +9,7 @@ class Mailer
     def spammer()
         json = File.read(ENV['JSON'])
         hash = JSON.parse(json)
-        
+
         gmail = Gmail.connect(ENV['ID'], ENV['PASS'])
         hash.each do | key, value |
             gmail.deliver do
@@ -27,6 +27,19 @@ class Mailer
         gmail.logout
         puts "Done"
     end
-end
 
-Mailer.new.spammer()
+    def test_mail_sending(id)
+        gmail = Gmail.connect(ENV['ID'], ENV['PASS'])
+        gmail.deliver do
+            to id
+            subject "TEST"
+            text_part do
+                body "Hello, i'm a test"
+            end
+        end
+        puts "All mail was sent"
+        puts "Gmail will logout"
+        gmail.logout
+        puts "Done"
+    end
+end
