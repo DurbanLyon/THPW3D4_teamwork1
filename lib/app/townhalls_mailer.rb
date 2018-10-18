@@ -35,6 +35,7 @@ class Mailer
             text_part do
                 body "Hello, i'm a test"
             end
+            puts "Mail was sent to #{id}"
         end
         puts 'All mail was sent'
         puts 'Gmail will logout'
