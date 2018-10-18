@@ -4,12 +4,13 @@ require 'json'
 
 class Mailer
     def initialize()
+      spammer
     end
 
     def spammer()
         json = File.read(ENV['JSON'])
         hash = JSON.parse(json)
-        
+
         gmail = Gmail.connect(ENV['ID'], ENV['PASS'])
         hash.each do | key, value |
             gmail.deliver do
@@ -28,5 +29,3 @@ class Mailer
         puts "Done"
     end
 end
-
-Mailer.new.spammer()
