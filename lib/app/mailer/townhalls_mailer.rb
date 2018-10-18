@@ -7,9 +7,9 @@ class Mailer
     end
 
     def spammer()
-        json = File.open('')
-        hash = 
-
+        json = File.read(ENV['JSON'])
+        hash = JSON.parse(json)
+        
         gmail = Gmail.connect(ENV['ID'], ENV['PASS'])
         hash.each do | key, value |
             gmail.deliver do
