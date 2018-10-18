@@ -1,15 +1,14 @@
 require 'gmail'
 require 'dotenv/load'
+require 'json'
 
 class Mailer
     def initialize()
     end
 
     def spammer()
-        hash = {
-            'mabite' => 'krashbook@gmail.com',
-            'moncul' => 'ahm0naati@gmail.com'
-        }
+        json = File.open('')
+        hash = 
 
         gmail = Gmail.connect(ENV['ID'], ENV['PASS'])
         hash.each do | key, value |
