@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 require 'colorize'
+
 #This class scrapp 3 departments in france to pick up its emails by townhalls
 class Scrapp_mairie
 
@@ -9,12 +10,14 @@ class Scrapp_mairie
     def initialize
         doc = doc
     end
-# pick up the email at it's profile page(=townhalls profile page)
+
+    # pick up the email at it's profile page(=townhalls profile page)
     def get_the_email_of_a_townhal_from_its_webpage(url)
         doc = Nokogiri::HTML(open(url))
         doc.xpath('/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]').each do |element| return element.text end
     end
-# scan and go into each townhalls of "cote d'or" department
+    
+    # scan and go into each townhalls of "cote d'or" department
     def get_all_the_urls_townhalls_cot_d_or
         doc = Nokogiri::HTML(open("http://annuaire-des-mairies.com/cote-d-or.html"))
         doc2 = Nokogiri::HTML(open("http://annuaire-des-mairies.com/cote-d-or-2.html"))
@@ -43,7 +46,8 @@ class Scrapp_mairie
         end 
        return myhash = Hash[tabname.zip(urlend)]
     end
-# scan and go into each townhalls of "rhone" department
+    
+    # scan and go into each townhalls of "rhone" department
     def get_all_the_urls_townhalls_rhone
         doc = Nokogiri::HTML(open("http://annuaire-des-mairies.com/rhone.html"))
         doc2 = Nokogiri::HTML(open("http://annuaire-des-mairies.com/rhone-2.html"))
@@ -66,7 +70,8 @@ class Scrapp_mairie
         end 
         return myhash = Hash[tabname.zip(urlend)]
     end
-# scan and go into each townhalls of "bouches-du-rhone" department
+    
+    # scan and go into each townhalls of "bouches-du-rhone" department
     def get_all_the_urls_townhalls
         doc = Nokogiri::HTML(open("http://annuaire-des-mairies.com/bouches-du-rhone.html"))
         urlend = []
@@ -81,7 +86,8 @@ class Scrapp_mairie
         end
         return  myhash = Hash[tabname.zip(urlend)]
     end
-# create a .json for each department with each hash and merge them into one .json
+    
+    # create a .json for each department with each hash and merge them into one .json
     def create
         file = File.open("db/emails.json", "w")
         system "clear"

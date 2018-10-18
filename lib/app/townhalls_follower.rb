@@ -5,13 +5,13 @@ Dotenv.load
 
 class TownHallsFollower
 
+  # va chercher les noms des mairies dans le JSON
   def initialize()
-# va chercher les noms des mairies dans le JSON
-    json = File.read(ENV['JSON'])
+    json = File.read("db/emails.json")
     @jsonparsed = JSON.parse(json)
   end
 
-    # fonction qui cherche des handles avec les noms de mairie
+  # fonction qui cherche des handles avec les noms de mairie
   def get_handle()
 
     client = Twitter::REST::Client.new do |config|
@@ -22,12 +22,14 @@ class TownHallsFollower
     end
 
     @user_list = []
+    p @jsonparsed
+=begin
     @jsonparsed.each do |key, value|
 
         unless client.user_search("ville de #{key}").take(1) == nil
           @user_list << client.user_search("ville de #{key}").take(1)
         end
-
+=end
     end
     return @user_list
   end
