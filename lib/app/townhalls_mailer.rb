@@ -4,7 +4,6 @@ require 'json'
 
 class Mailer
     def initialize()
-      spammer
     end
 
     def spammer()
@@ -27,5 +26,17 @@ class Mailer
         puts "Gmail will logout"
         gmail.logout
         puts "Done"
+    end
+
+    def test_mail_sending(id)
+        gmail = Gmail.connect(ENV['ID'], ENV['PASS'])
+        gmail.deliver do
+            to id
+            subject "TEST"
+            text_part do
+                body "Hello, i'm a test"
+            end
+        end
+        gmail.logout
     end
 end

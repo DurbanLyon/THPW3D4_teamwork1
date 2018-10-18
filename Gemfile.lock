@@ -1,24 +1,29 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    childprocess (0.9.0)
+      ffi (~> 1.0, >= 1.0.11)
     colorize (0.8.1)
-    formatador (0.2.5)
-    google (1.0.10)
-      formatador (~> 0.2)
-      htmlentities (~> 4)
-      json (~> 1)
-      ruby-readability (~> 0.5)
-      trollop (~> 1)
-    guess_html_encoding (0.0.11)
-    htmlentities (4.3.4)
-    json (1.8.6)
+    ffi (1.9.25)
+    gmail (0.7.1)
+      gmail_xoauth (>= 0.3.0)
+      mail (>= 2.2.1)
+    gmail_xoauth (0.4.2)
+      oauth (>= 0.3.6)
+    json (2.1.0)
+    mail (2.7.1)
+      mini_mime (>= 0.1.1)
+    mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
-    ruby-readability (0.7.0)
-      guess_html_encoding (>= 0.0.4)
-      nokogiri (>= 1.6.0)
-    trollop (1.16.2)
+    oauth (0.5.4)
+    rubyzip (1.2.2)
+    selenium-webdriver (3.14.1)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.2, >= 1.2.2)
+    watir (6.14.0)
+      selenium-webdriver (~> 3.4, >= 3.4.1)
 
 PLATFORMS
   ruby
@@ -26,9 +31,10 @@ PLATFORMS
 DEPENDENCIES
   bundler
   colorize
-  google
+  gmail
   json
   nokogiri
+  watir
 
 RUBY VERSION
    ruby 2.5.1p57
