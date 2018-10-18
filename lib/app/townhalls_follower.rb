@@ -70,7 +70,7 @@ class TownHallsFollower
   end
 
   # methode qui enregistre nom|mail|handle dans un CSV
-  def create_csv
+  def create_spreadsheet
     session = GoogleDrive::Session.from_config("config.json")
     ws = session.spreadsheet_by_key("1IhE2BwMGhfnGdoPjqBCL2L4z6c5ttrwNezllMuprUSQ").worksheets[0]
     file = File.read('/home/salim/THP/semaine03/day14/teamrocket/db/emails.json')
