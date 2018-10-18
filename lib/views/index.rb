@@ -4,6 +4,7 @@ require 'townhalls_mailer'
 require 'townhalls_follower'
 require 'townhalls_scrapper'
 
+
 class Index
 
   def initialize
@@ -51,7 +52,7 @@ class Index
     elsif choice == "4" # Follow les mairies sur twitter
 
       unless FileTest.exist?("db/emails.json") then puts "Veuillez récupérer les emails des mairies d'abord" end# Verif si le fichier JSON a bien été créé en db
-      TownHallsFollower.new.perform()
+      TownHallsFollower.follow_all(TownHallsFollower.get_handle)
 
 
     elsif choice == "5" # Efface le fichier JSON
