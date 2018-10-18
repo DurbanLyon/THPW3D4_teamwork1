@@ -2,6 +2,9 @@ require 'twitter'
 require 'dotenv'
 require 'json'
 require 'rubocop'
+require 'google_drive'
+require "open-uri"
+
 Dotenv.load
 
 # *************************************************************************** #
@@ -31,8 +34,8 @@ class TownHallsFollower
   # methode cherchant avec l'API twitter les handles de mairies
   def get_handle()
       # parse du fichier JSON
-      json = File.read(ENV['JSON']) # adresse du fichier dans .ENV
-      @jsonparsed = JSON.parse(json)
+      #json = File.read(ENV['JSON']) # adresse du fichier dans .ENV
+      #@jsonparsed = JSON.parse(json)
 
       client = Twitter::REST::Client.new do |config|
       config.consumer_key         = ENV['TWITTER_API_KEY']
@@ -42,12 +45,12 @@ class TownHallsFollower
       end
 
     user_list = []
-    @jsonparsed.each do |k, _v|
-      unless client.user_search("ville de #{k}").take(1) == nil?
-        user_list << client.user_search("ville de #{k}").take(1)
-      end
+    #@jsonparsed.each do |k, _v|
+      #unless client.user_search("ville de #{k}").take(1) == nil?
+       # user_list << client.user_search("ville de #{k}").take(1)
+      #end
       return user_list
-    end
+    #end
   end
 
   # methode qui follow les mairies sur twitter
@@ -66,6 +69,18 @@ class TownHallsFollower
 
   # methode qui enregistre nom|mail|handle dans un CSV
   def create_csv
+    session = GoogleDrive::Session.from_config("config.json")
+    ws = session.spreadsheet_by_key("1IhE2BwMGhfnGdoPjqBCL2L4z6c5ttrwNezllMuprUSQ").worksheets[0]
+    file = File.read('/home/salim/THP/semaine03/day14/teamrocket/db/emails.json')
+        my_hash = JSON.parse(file)
+        i = 1
+        my_hash.each do |key , value|
+            ws[i, 1] = key
+            ws[i, 2] = value
+            ws[i, 3] = "@#{key}"
+            i += 1
+        end
+        ws.save
   end
 
   # lancement global
