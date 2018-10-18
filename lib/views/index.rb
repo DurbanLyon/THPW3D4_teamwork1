@@ -32,27 +32,26 @@ class Index
 
     # Commandes
     if choice == "1" # Crée un fichier JSON en db et scrapp les données des mairies
-
       Scrapp_mairie.new.create
       unless FileTest.exist?("db/emails.json") then puts "Erreur : le fichier n'a pas été créé en database" end # Verif si le fichier JSON a bien été créé en db
       puts "Données récupérées, voulez-vous les afficher ? y/n"
       if gets.chomp == "y" then puts File.open("db/emails.json") end
 
-    elsif choice == "2" # Envoi un mail à une adresse rentrée par l'utilisateur
 
+    elsif choice == "2" # Envoi un mail à une adresse rentrée par l'utilisateur
       puts "A quelle adresse email faut-il envoyer le mail publicitaire ?"
       id = gets.chomp.to_s
       Mailer.new.test_mail_sending(id)
 
-    elsif choice == "3" # Envoi un mail publicitaire à chaque mairie
 
+    elsif choice == "3" # Envoi un mail publicitaire à chaque mairie
       unless FileTest.exist?("db/emails.json") then puts "Veuillez récupérer les emails des mairies d'abord" end # Verif si le fichier JSON a bien été créé en db
       Mailer.new.spammer()
 
-    elsif choice == "4" # Follow les mairies sur twitter
 
+    elsif choice == "4" # Follow les mairies sur twitter
       unless FileTest.exist?("db/emails.json") then puts "Veuillez récupérer les emails des mairies d'abord" end# Verif si le fichier JSON a bien été créé en db
-      TownHallsFollower.follow_all(TownHallsFollower.get_handle)
+      TownHallsFollower
 
 
     elsif choice == "5" # Efface le fichier JSON
@@ -61,9 +60,9 @@ class Index
       else puts "Données effacées !"
       end
 
+
     elsif choice == "6" # Quitte l'appli
       return puts "A bientôt !"
-
     end
 
     # Renvoi au menu
