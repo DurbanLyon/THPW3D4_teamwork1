@@ -29,7 +29,9 @@ Le programme permet de :
 
 * envoyer un mail de pub à une adresse quelconque afin de faire un test
 * envoyer automatiquement des emails publicitaire aux mairies de ces trois départements : cote d'or, Rhone et Bouche du rhone
-* suivre les compte twitter des mairies des départements pré-cités.
+* suivre les compte twitter des mairies des départements pré-cités
+* vous pouvez également voir le résultat de notre projet en groupe en consultant notre fichier .csv a l'adresse suivante :
+    * https://docs.google.com/spreadsheets/d/1IhE2BwMGhfnGdoPjqBCL2L4z6c5ttrwNezllMuprUSQ/edit#gid=1429490167
 
 Afin de faire fonctionner le programme, il faut au préalable créer un fichier ".env" et renseigner dedans les lignes qui suivent :
 
