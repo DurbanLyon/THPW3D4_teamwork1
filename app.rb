@@ -1,8 +1,7 @@
+$:.unshift File.expand_path("./../lib/views", __FILE__)
+
 require 'bundler'
+require 'index'
+
 Bundler.require
-
-$:.unshift File.expand_path("./../lib/app", __FILE__)
-require 'townhalls_scrapper'
-require 'google'
-
-Scrapp_mairie.new.create
+Index.new
