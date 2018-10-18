@@ -1,1 +1,7 @@
 .env
+<<<<<<< HEAD
+=======
+Gemfile.lock
+.config.json
+lib/app/mailer.env
+>>>>>>> master
