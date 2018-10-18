@@ -1,7 +1,7 @@
 require 'twitter'
 require 'dotenv'
 require 'json'
-require 'rubocop'
+
 Dotenv.load
 
 # *************************************************************************** #
@@ -72,10 +72,6 @@ class TownHallsFollower
       client.follow(elem)
       puts "Follow #{elem} done"
     end
-  end
-
-  # methode qui enregistre nom|mail|handle dans un CSV
-  def create_csv
   end
 
   # lancement global
