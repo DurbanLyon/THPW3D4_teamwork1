@@ -9,30 +9,18 @@
 nom            | Pseudo Slack
  ------------  | -------------
 Saghour khalil | @saghour khalil
-
-nom            | Pseudo Slack
   ------------ | -------------
 Boumedine Salim| @SaSSou
-
-nom            | Pseudo Slack
  ------------  | -------------
-Durban kenadi  | @Kenadi.S
-
-nom            | Pseudo Slack
+Palma Andréa   | @plm
   ------------ | -------------
-Potie Quentin  | @TinQk
-
-nom            | Pseudo Slack
- ------------  | -------------
 Jolan Lacroix  | @JOLLACRO
-
-nom            | Pseudo Slack
+ ------------  | -------------
+Potie Quentin  | @TinQk
   ------------ | -------------
 Jiffard Joslin | @Redcozmo
-
-nom            | Pseudo Slack
   ------------ | -------------
-Palma Andréa   | @plm
+Durban kenadi  | @Kenadi.S
 
 
 # Comment fonction le programme ?
