@@ -31,7 +31,8 @@ class TownHallsFollower
   # methode cherchant avec l'API twitter les handles de mairies
   def get_handle()
       # parse du fichier JSON
-      json = File.read(ENV['JSON']) # adresse du fichier dans .ENV
+
+      json = File.read('db/emails.json') # adresse du fichier
       @jsonparsed = JSON.parse(json)
 
       client = Twitter::REST::Client.new do |config|
@@ -46,6 +47,7 @@ class TownHallsFollower
       unless client.user_search("ville de #{k}").take(1) == nil?
         user_list << client.user_search("ville de #{k}").take(1)
       end
+      puts user_list
       return user_list
     end
   end
