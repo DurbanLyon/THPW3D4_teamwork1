@@ -3,7 +3,7 @@ require 'townhalls_mailer'
 #require 'townhalls_follower'
 #require 'townhalls_scrapper'
 
-$db_json = "./../../db/Emails.JSON"
+$db_json = "./../../db/emails.JSON"
 
 class Index
 
