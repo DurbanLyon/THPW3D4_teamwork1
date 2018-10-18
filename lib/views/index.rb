@@ -34,16 +34,16 @@ class Index
     if choice == "1"
 
       Scrapper.new # Scrapp les données des mairies et crée un JSON en db
-      unless FileTest.exist?($db_json) then puts "Erreur : le fichier n'a pas été créé en database" # Verif si le fichier JSON a bien été créé en db
+      unless FileTest.exist?($db_json) then puts "Erreur : le fichier n'a pas été créé en database" end # Verif si le fichier JSON a bien été créé en db
       puts "Données récupérées, voulez-vous les afficher ? y/n"
       if gets.chomp = "y" then puts File.open($db_json) end
 
 
     elsif choice == "2"
-      unless FileTest.exist?($db_json) then puts "Veuillez récupérer les emails des mairies d'abord" # Verif si le fichier JSON a bien été créé en db
+      unless FileTest.exist?($db_json) then puts "Veuillez récupérer les emails des mairies d'abord" end# Verif si le fichier JSON a bien été créé en db
 
     elsif choice == "3"
-      unless FileTest.exist?($db_json) then puts "Veuillez récupérer les emails des mairies d'abord" # Verif si le fichier JSON a bien été créé en db
+      unless FileTest.exist?($db_json) then puts "Veuillez récupérer les emails des mairies d'abord" end# Verif si le fichier JSON a bien été créé en db
 
     elsif choice == "4"
 

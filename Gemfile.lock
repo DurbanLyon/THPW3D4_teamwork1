@@ -27,6 +27,7 @@ DEPENDENCIES
   bundler
   colorize
   google
+  json
   nokogiri
 
 RUBY VERSION
