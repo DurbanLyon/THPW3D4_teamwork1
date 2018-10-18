@@ -40,8 +40,7 @@ class Index
 
     elsif choice == "2" # Envoi un mail à une adresse rentrée par l'utilisateur
       puts "A quelle adresse email faut-il envoyer le mail publicitaire ?"
-      id = gets.chomp.to_s
-      Mailer.new.test_mail_sending(id)
+      Mailer.new.test_mail_sending()
 
 
     elsif choice == "3" # Envoi un mail publicitaire à chaque mairie
