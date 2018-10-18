@@ -1,5 +1,3 @@
 .env
 Gemfile.lock
 .config.json
-lib/app/mailer/.credentials.json
-lib/app/mailer/.token.yaml
